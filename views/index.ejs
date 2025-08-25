@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Posts</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Daily Thought Posts</h1>
+    <a class="btn primary" href="/posts/new">+ New Post</a>
+  </header>
+
+  <main class="container">
+    <% if (posts.length === 0) { %>
+      <p class="muted">No posts yet. Create the first one!</p>
+    <% } %>
+
+    <div class="grid">
+      <% for (const post of posts) { %>
+        <article class="card">
+          <div class="card-head">
+            <div class="avatar"><%= post.username[0]?.toUpperCase() || "U" %></div>
+            <div>
+              <div class="user">@<%= post.username %></div>
+              <div class="id muted">ID: <%= post.id %></div>
+            </div>
+          </div>
+
+          <p class="content"><%= post.content %></p>
+
+          <div class="actions">
+            <a class="btn" href="/posts/<%= post.id %>">View</a>
+            <a class="btn" href="/posts/<%= post.id %>/edit">Edit</a>
+            <form method="post" action="/posts/<%= post.id %>/delete" onsubmit="return confirm('Delete this post?')">
+              <button class="btn danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </article>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

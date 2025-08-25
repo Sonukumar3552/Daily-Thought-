@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Edit Post</h1>
+    <a class="btn" href="/posts">← Back</a>
+  </header>
+
+  <main class="container">
+    <form class="form card" method="post" action="/posts/<%= post.id %>">
+      <label>
+        <span>Username</span>
+        <input name="username" value="<%= post.username %>" required />
+      </label>
+
+      <label>
+        <span>Content</span>
+        <textarea name="content" rows="5" required><%= post.content %></textarea>
+      </label>
+
+      <button class="btn primary" type="submit">Save Changes</button>
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post <%= post.id %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>@<%= post.username %></h1>
+    <nav class="row">
+      <a class="btn" href="/posts">All Posts</a>
+      <a class="btn" href="/posts/<%= post.id %>/edit">Edit</a>
+      <form method="post" action="/posts/<%= post.id %>/delete" onsubmit="return confirm('Delete this post?')">
+        <button class="btn danger" type="submit">Delete</button>
+      </form>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <div class="muted">ID: <%= post.id %></div>
+      <p class="content lg"><%= post.content %></p>
+    </article>
+  </main>
+</body>
+</html>
